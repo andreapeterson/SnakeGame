@@ -7,7 +7,7 @@ UP = 90
 DOWN = 270
 RIGHT = 0
 LEFT = 180
-colors = ["yellow", "gold", "orange", "red", "maroon", "violet", "magenta", "purple", "navy", "blue", "skyblue", "cyan", "turquoise", "lightgreen", "green", "darkgreen", "chocolate", "brown", "black", "gray", "white"]
+colors = ["yellow", "gold", "orange", "red", "maroon", "violet", "magenta", "purple", "navy", "blue", "skyblue", "cyan", "turquoise", "lightgreen", "green", "darkgreen", "chocolate", "brown", "gray", "white"]
 
 
 class Snake:
@@ -35,9 +35,11 @@ class Snake:
         snake = t.Turtle(shape="square")
         snake.color(random.choice(colors))
         snake.penup()
+        snake.goto(1000, 1000)
         snake.shapesize(0.9, 0.9)
         self.segments.append(snake)
         snake.goto(self.segments[-1].position())
+        snake.color(random.choice(colors))
 
     def move_snake(self):
         for segment_num in range(len(self.segments) - 1, 0, -1):
@@ -61,5 +63,12 @@ class Snake:
     def left(self):
         if self.segments[0].heading() != RIGHT:
             self.segments[0].setheading(LEFT)
+
+    def reset(self):
+        for segment in self.segments:
+            segment.reset()
+        self.segments.clear()
+        self.__init__()
+
 
 
