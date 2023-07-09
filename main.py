@@ -3,7 +3,6 @@ import time
 from food import Food
 from snake import Snake
 from scoreboard import Scoreboard
-from gameover import Gameover
 
 # Screen set-up
 screen = t.Screen()
@@ -16,7 +15,6 @@ snake = Snake()
 food = Food()
 score = Scoreboard()
 score.keep_score()
-endgame = Gameover()
 
 
 screen.listen()
@@ -37,21 +35,20 @@ while game_on:
     # if the snake head is closest enough to the food, it will add a segment to the snake and increase the score and
     # reset the food
     if snake.segments[0].distance(food) < 15:
+        screen.tracer(0)
         snake.extend_snake()
-        score.clear()
         score.increase_score()
         food.refresh()
 
     # To trigger game over if snake runs into wall
     if abs(snake.segments[0].xcor()) > 285 or abs(snake.segments[0].ycor()) > 285:
-        game_on = False
-        endgame.end_game()
+        score.reset()
+        snake.reset()
 
     # To trigger game over if snake runs into itself
     for segment in snake.segments[1:]:
         if snake.segments[0].distance(segment) < 10:
-            game_on = False
-            endgame.end_game()
-
+            score.reset()
+            snake.reset()
 
 screen.exitonclick()
