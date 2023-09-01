@@ -4,3 +4,6 @@ Using OOP and class inheritance as well as the turtle library, I recreated the c
 
 Update: I changed some things in order to not have a game over but rather to continuously play. I deleted the gameover.py and updated the scoreboard.py (to add highscore attribute and reset method that will keep a high score), and added a reset method to the snake class so that the snake resets after you lose and I reflected all of these changes in the main.py so the game will run these new updates.
 Also, I added a highscore.txt and added code into scoreboard.py to save the high score to the txt file so when you play again you can remember your previous score.
+
+
+![snakegame](https://github.com/andreapeterson/SnakeGame/assets/134665743/17b98e52-27dd-4720-ab7f-a918718de051)
